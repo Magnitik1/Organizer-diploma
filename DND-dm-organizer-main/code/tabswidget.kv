@@ -1,0 +1,23 @@
+#:import current_locale_data mylocalisation.current_locale_data
+
+<_TabMenuBarButton>
+    text: current_locale_data[self.tabmodule_ID]
+    background_color:
+        self.background_color_pressed if self.state == "down" \
+        else self.background_selected if self.is_selected \
+        else self.background_default
+    background_normal:''
+    background_down:''
+    size_hint_x: 0.1
+
+<TabsWidget>
+    orientation: "vertical"
+    tab_manager:tab_manager
+    BoxLayout:
+        id: tabs_menu_bar
+        size_hint_y: None
+        height: 50
+        width: root.width
+    ScreenManager:
+        id: tab_manager
+

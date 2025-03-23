@@ -1,0 +1,40 @@
+#:import math math
+<NotepadTab>
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: 0.8706, 0.8706, 0.8078, 1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        GridLayout:
+            width: self.minimum_width
+            cols: math.floor(self.width / 230)
+            row_force_default: True
+            col_force_default: True
+            row_default_height: 230
+            col_default_width: 230
+            pos_hint: {'center_x': 0.5}
+
+            spacing: math.floor(self.width / 230)
+            Button:
+                background_color: "#E4E181"
+                background_normal:""
+                text:"I'm an notepad tab"
+                color: "#000000"
+                text: str(self.parent.minimum_width)
+            Button:
+                background_color: "#E4E181"
+                background_normal:""
+                text:"I'm an notepad tab"
+                color: "#000000"
+            Button:
+                background_color: "#E4E181"
+                background_normal:""
+                text:"I'm an notepad tab"
+                color: "#000000"
+            Button:
+                background_color: "#E4E181"
+                background_normal:""
+                text:"I'm an notepad tab"
+                color: "#000000"
