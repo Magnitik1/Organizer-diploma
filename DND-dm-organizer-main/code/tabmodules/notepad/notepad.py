@@ -10,6 +10,14 @@ class NotepadTab(Screen):
   color = "#E4E181"
 
 
-#used by the tab module importer
-#must be a `kivy.uix.screenmanager.Screen` subclass 
+class Note():
+  def __init__(self, text, name=None):
+    if name is None:
+      name = text[:20] + "..." if len(text) > 20 else text
+    self.name = name
+    self.text = text
+ 
+
+
 tabmodule_tab_export=NotepadTab
+

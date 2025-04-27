@@ -21,7 +21,7 @@ import functools
 from collections import OrderedDict
 
 # The keys for the translated text used in tab name display
-tabmodule_IDs = ["Campaign", "NPC", "fight", "notepad", "music", "spells", "equipment"]
+tabmodule_IDs = ["Campaign", "NPC", "Fight", "Notepad", "Music", "Spells", "Equipment"]
 
 
 # The names of the folders fo the modules in ./tabmodules
@@ -39,10 +39,9 @@ import abc
 class _TabMenuBarButton(Button):
     def __init__(self, tabmodule_ID: str, **kwargs):
         self.tabmodule_ID = tabmodule_ID
-        # Super after assignment,
-        # because otherwise the button tries to get text translation for an empty id
+        # Super after assignment, because otherwise the button tries to get text translation for an empty id
         super().__init__(**kwargs)
-        pass
+
 
     tabmodule_ID: str = StringProperty()
     is_selected: bool = BooleanProperty(False)
@@ -51,7 +50,6 @@ class _TabMenuBarButton(Button):
     background_color_pressed = ColorProperty((0.4941, 0.5506, 0.3670, 1))
 
 
-# concatinate with _TabMenuBarButton!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 @dataclass
 class Tab:
     """A class that represents a single tab"""
@@ -68,15 +66,19 @@ class TabsWidget(BoxLayout, Widget):
        as well as the content of the selected one,
        content is represented by a `Widget`"""
     # Going through a fake cast, because
-    # ListProperty doesn't have typing information, for some reason
+    # ListProperty doesn't have typing information
     tabs = typing.cast(list[Tab], ListProperty())
     # kv assigned
-    tab_manager: ScreenManager = ObjectProperty()
+    ScreenManager = ObjectProperty()
     _tabs_by_IDs: dict[str, Tab]
 
 
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._tabs_by_IDs = {}
+
     @staticmethod
-    def on_tabs(inst: TabsWidget, tabs: list[Tab]):
+    def on_tabs(inst, tabs: list[Tab]):
         menu_bar: Widget = inst.ids.tabs_menu_bar
         # Reset all
         menu_bar.clear_widgets()
@@ -99,8 +101,8 @@ class TabsWidget(BoxLayout, Widget):
             inst.selected_tab = inst.tabs[0]
 
     def on_tabmenubarbutton_press(self, btn):
-        # select tab.
         self.selected_tab = self._tabs_by_IDs[btn.tabmodule_ID]
+
 
     selected_tab = ObjectProperty(None)
     selected_tab_previous: Tab | None = None
@@ -115,16 +117,13 @@ class TabsWidget(BoxLayout, Widget):
         tab._assigned_Button.is_selected = True
         # Tab switch
         now_order_id = tab._tab_order_id
-        inst.tab_manager.transition.direction = \
-            "left" if now_order_id > prev_order_id else "right"
+        inst.tab_manager.transition.direction = "left" if now_order_id > prev_order_id else "right"
 
         inst.tab_manager.current = tab.tabmodule_ID
         # end
         inst.selected_tab_previous = tab
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self._tabs_by_IDs = {}
+
 
     def load_default_tabs(self):
         self.tabs = load_tabmodules(tabmodule_IDs)
@@ -147,7 +146,7 @@ def load_tabmodules(tabmodule_IDs=tabmodule_IDs):
         tabs.append(Tab(tabmodule_ID, tab_Screen))
     return tabs
 
-
+# widget which responsible for each tab
 def _get_tabmodule_export(tabmodule_path) -> typing.Optional[type[Screen]]:
     tabmodule = _importlib.import_module(tabmodule_path, package=None)
     if hasattr(tabmodule, "tabmodule_tab_export"):

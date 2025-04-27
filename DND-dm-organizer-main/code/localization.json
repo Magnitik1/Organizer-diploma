@@ -2,37 +2,37 @@
     "en": {
         "Campaign": "Campaign",
         "NPC": "NPC",
-        "fight": "Fight",
-        "notepad": "Notepad",
-        "music": "Music",
-        "spells": "Spells",
-        "equipment": "Equipment"
+        "Fight": "Fight",
+        "Notepad": "Notepad",
+        "Music": "Music",
+        "Spells": "Spells",
+        "Equipment": "Equipment"
     },
     "ru": {
         "Campaign": "Кампания",
         "NPC": "NPC",
-        "fight": "Бой",
-        "notepad": "Блокнот",
-        "music": "Музыка",
-        "spells": "Заклинания",
-        "equipment": "Снаряжение"
+        "Fight": "Бой",
+        "Notepad": "Блокнот",
+        "Music": "Музыка",
+        "Spells": "Заклинания",
+        "Equipment": "Снаряжение"
     },
     "uk": {
         "Campaign": "Кампанія",
         "NPC": "NPC",
-        "fight": "Бій",
-        "notepad": "Нотатник",
-        "music": "Музика",
-        "spells": "Закляття",
-        "equipment": "Спорядження"
+        "Fight": "Бій",
+        "Notepad": "Нотатник",
+        "Music": "Музика",
+        "Spells": "Закляття",
+        "Equipment": "Спорядження"
     },
     "pl": {
         "Campaign": "Kampania",
         "NPC": "NPC",
-        "fight": "Walka",
-        "notepad": "Notatnik",
-        "music": "Muzyka",
-        "spells": "Zaklęcia",
-        "equipment": "Wyposażenie"
+        "Fight": "Walka",
+        "Notepad": "Notatnik",
+        "Music": "Muzyka",
+        "Spells": "Zaklęcia",
+        "Equipment": "Wyposażenie"
     }
 }

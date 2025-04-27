@@ -1,3 +1,31 @@
-<CampaignTab>
-    Button:
-        text:"I'm a campaign tab"
+#:kivy 2.1.0
+
+<CampaignTab>:
+    name: "campaign_tab"
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    ScrollView:
+        id: pdf_scroll
+        do_scroll_x: False
+        do_scroll_y: True
+        bar_width: 8
+        scroll_type: ['bars', 'content']
+
+        BoxLayout:
+            id: pdf_container
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+            padding: dp(10)
+            spacing: dp(20)
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size

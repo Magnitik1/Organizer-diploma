@@ -1,3 +1,4 @@
+#:kivy 2.1.0
 #:import math math
 <NotepadTab>
     FloatLayout:
@@ -9,14 +10,14 @@
                 size: self.size
         GridLayout:
             width: self.minimum_width
-            cols: math.floor(self.width / 230)
+            cols: max(1, math.floor((self.width - 15) / 195))
             row_force_default: True
             col_force_default: True
-            row_default_height: 230
-            col_default_width: 230
-            pos_hint: {'center_x': 0.5}
+            row_default_height: 170
+            col_default_width: 170
 
-            spacing: math.floor(self.width / 230)
+            padding: 30, 25
+            spacing: 20
             Button:
                 background_color: "#E4E181"
                 background_normal:""
